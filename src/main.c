@@ -65,8 +65,9 @@ void ordenarAlunosMediaDescrecente(int qtdAlunos, int idAluno[], float mediaAlun
 }
 
 void exibirMaiorEMenorMedia(int idAluno[], float mediaAluno[], int qtdAlunos){
-    printf("\nA maior media da turma | Aluno ID %d | Nota %.2f\n", idAluno[0], mediaAluno[0]);
-    printf("A menor media da turma | Aluno ID %d | Nota %.2f\n", idAluno[qtdAlunos - 1], mediaAluno[qtdAlunos - 1]);
+    printf("\n--------------------------------");
+    printf("\nMaior media da turma -> Aluno ID %d | Nota %.2f\n", idAluno[0], mediaAluno[0]);
+    printf("A menor media da turma -> Aluno ID %d | Nota %.2f\n", idAluno[qtdAlunos - 1], mediaAluno[qtdAlunos - 1]);
 }
 
 
