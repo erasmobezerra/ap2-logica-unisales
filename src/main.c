@@ -40,7 +40,7 @@ void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno
     }
 }
 
-void ordenarAlunosMediaDescrecente(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]){
+void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]){
     for(int i = 0; i < qtdAlunos - 1; i++) {
         for(int j = 0; j < qtdAlunos - i - 1; j++) {
             if(mediaAluno[j] < mediaAluno[j + 1]) {
@@ -98,7 +98,7 @@ int main(){
     leiaDadosAlunos(qtdAlunos, idAluno, notas);
     calculeMediaAlunos(qtdAlunos, notas, mediaAluno);
     verificarSituacaoAluno(qtdAlunos, situacao, mediaAluno);
-    ordenarAlunosMediaDescrecente(qtdAlunos, idAluno, mediaAluno, situacao);
+    ordenarAlunosPorMaiorMedia(qtdAlunos, idAluno, mediaAluno, situacao);
 
     exibirMaiorEMenorMedia(idAluno, mediaAluno, qtdAlunos);
     exibirRankingAlunos(qtdAlunos, idAluno, mediaAluno, situacao);
