@@ -2,6 +2,48 @@
 #include <stdbool.h>
 #include <string.h>
 
+// Protótipos das funções
+void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][3]);
+void calculeMediaAlunos(int qtdAlunos, float notas[][3], float mediaAluno[]);
+void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno[]);
+void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]);
+void exibirMaiorEMenorMedia(int idAluno[], float mediaAluno[], int qtdAlunos);
+void exibirRankingAlunos(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]);
+
+// Função principal
+int main(){
+
+    // Solicita a quantidade de alunos a serem cadastrados
+    int qtdAlunos;    
+    printf("Informe a quantidade de alunos a serem cadastrados:\n");
+    scanf("%d", &qtdAlunos);
+
+    // Declaração dos vetores e matrizes para armazenar os dados dos alunos
+    int idAluno[qtdAlunos];
+    float mediaAluno[qtdAlunos];
+    char situacao[qtdAlunos][12];
+    float notas[qtdAlunos][3]; 
+
+    // Chama a Função para ler os dados dos alunos
+    leiaDadosAlunos(qtdAlunos, idAluno, notas);
+    // Chama aFunção para calcular a média dos alunos
+    calculeMediaAlunos(qtdAlunos, notas, mediaAluno);
+    // Chama a Função para verificar a situação dos alunos
+    verificarSituacaoAluno(qtdAlunos, situacao, mediaAluno);
+    // Chama a Função para ordenar os alunos por maior média
+    ordenarAlunosPorMaiorMedia(qtdAlunos, idAluno, mediaAluno, situacao);
+
+    // Chama a Função para exibir a maior e menor média da turma
+    exibirMaiorEMenorMedia(idAluno, mediaAluno, qtdAlunos);
+    // Chama a Função para exibir o ranking dos alunos
+    exibirRankingAlunos(qtdAlunos, idAluno, mediaAluno, situacao);
+    
+    // Retorna 0 para indicar que o programa terminou com sucesso
+    return 0;
+
+}
+
+// Função para ler os dados dos alunos
 void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][3]){
     for(int i = 0; i < qtdAlunos; i++) {
         printf("\nInforme o código do aluno %d: ", i + 1);
@@ -16,6 +58,7 @@ void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][3]){
     }
 }
 
+// Função para calcular a média dos alunos
 void calculeMediaAlunos(int qtdAlunos, float notas[][3], float mediaAluno[]){
     float soma = 0;
     for(int i = 0; i < qtdAlunos; i++) {
@@ -27,6 +70,7 @@ void calculeMediaAlunos(int qtdAlunos, float notas[][3], float mediaAluno[]){
     }    
 }
 
+// Função para verificar a situação dos alunos
 void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno[]){
     for(int i = 0; i < qtdAlunos; i++){
         if(mediaAluno[i] >= 7){
@@ -40,6 +84,7 @@ void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno
     }
 }
 
+// Função para ordenar os alunos por maior média usando o algoritmo de ordenação Bubble Sort
 void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]){
     for(int i = 0; i < qtdAlunos - 1; i++) {
         for(int j = 0; j < qtdAlunos - i - 1; j++) {
@@ -64,15 +109,16 @@ void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[]
     }
 }
 
+// Função para exibir a maior e menor média da turma
+// A maior média estará na posição 0 do vetor após a ordenação, e a menor média estará na última posição do vetor
 void exibirMaiorEMenorMedia(int idAluno[], float mediaAluno[], int qtdAlunos){
     printf("\n--------------------------------");
     printf("\nMaior media da turma -> Aluno ID %d | Nota %.2f\n", idAluno[0], mediaAluno[0]);
-    printf("A menor media da turma -> Aluno ID %d | Nota %.2f\n", idAluno[qtdAlunos - 1], mediaAluno[qtdAlunos - 1]);
+    printf("Menor media da turma -> Aluno ID %d | Nota %.2f\n", idAluno[qtdAlunos - 1], mediaAluno[qtdAlunos - 1]);
+    printf("--------------------------------");
 }
 
-
-
-
+// Função para exibir o ranking dos alunos
 void exibirRankingAlunos(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]){
     printf("\nRanking dos Alunos:\n");
     printf("ID do Aluno | Média | Situação\n");
@@ -80,29 +126,4 @@ void exibirRankingAlunos(int qtdAlunos, int idAluno[], float mediaAluno[], char 
     for(int i = 0; i < qtdAlunos; i++) {
         printf("%d | %.2f | %s\n", idAluno[i], mediaAluno[i], situacao[i]);
     }
-}
-
-
-int main(){
-
-    int qtdAlunos;
-    
-    printf("Informe a quantidade de alunos a serem cadastrados:\n");
-    scanf("%d", &qtdAlunos);
-
-    int idAluno[qtdAlunos];
-    float mediaAluno[qtdAlunos];
-    char situacao[qtdAlunos][12];
-    float notas[qtdAlunos][3];
-
-    leiaDadosAlunos(qtdAlunos, idAluno, notas);
-    calculeMediaAlunos(qtdAlunos, notas, mediaAluno);
-    verificarSituacaoAluno(qtdAlunos, situacao, mediaAluno);
-    ordenarAlunosPorMaiorMedia(qtdAlunos, idAluno, mediaAluno, situacao);
-
-    exibirMaiorEMenorMedia(idAluno, mediaAluno, qtdAlunos);
-    exibirRankingAlunos(qtdAlunos, idAluno, mediaAluno, situacao);
-
-    return 0;
-
 }
