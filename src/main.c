@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 
+// Definições de constantes
 #define QTD_NOTAS 3
 #define TAM_SITUACAO 12
 #define MAX_ALUNOS 10
@@ -31,7 +32,7 @@ int main(){
     // ler os dados dos alunos
     leiaDadosAlunos(qtdAlunos, idAluno, notas);
 
-    // Chama aFunção para calcular a média dos alunos
+    // calcular a média dos alunos
     calculeMediaAlunos(qtdAlunos, notas, mediaAluno);
 
     // verificar a situação dos alunos
@@ -51,6 +52,7 @@ int main(){
 
 }
 
+// Ler a quantidade de alunos
 void leiaQtdAlunos(int *qtdAlunos){
     do {
         printf("Informe a quantidade de alunos a serem cadastrados: ");
@@ -106,7 +108,7 @@ void verificarSituacaoAluno(int qtdAlunos, char situacao[][TAM_SITUACAO], float 
     }
 }
 
-// ordenar os alunos por maior média usando o algoritmo de ordenação Bubble Sort
+// Ordenar os alunos por maior média usando o algoritmo de ordenação Bubble Sort
 void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][TAM_SITUACAO]){
     for(int i = 0; i < qtdAlunos - 1; i++) {
         for(int j = 0; j < qtdAlunos - i - 1; j++) {
