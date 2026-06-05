@@ -3,14 +3,15 @@
 #include <string.h>
 
 #define QTD_NOTAS 3
+#define TAM_SITUACAO 12
 
 // Protótipos das funções
 void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][QTD_NOTAS]);
 void calculeMediaAlunos(int qtdAlunos, float notas[][QTD_NOTAS], float mediaAluno[]);
 void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno[]);
-void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]);
+void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][TAM_SITUACAO]);
 void exibirMaiorEMenorMedia(int idAluno[], float mediaAluno[], int qtdAlunos);
-void exibirRankingAlunos(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]);
+void exibirRankingAlunos(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][TAM_SITUACAO]);
 
 // Função principal
 int main(){
@@ -23,7 +24,7 @@ int main(){
     // Declaração dos vetores e matrizes para armazenar os dados dos alunos
     int idAluno[qtdAlunos];
     float mediaAluno[qtdAlunos];
-    char situacao[qtdAlunos][12];
+    char situacao[qtdAlunos][TAM_SITUACAO];
     float notas[qtdAlunos][QTD_NOTAS]; 
 
     // ler os dados dos alunos
@@ -80,7 +81,7 @@ void calculeMediaAlunos(int qtdAlunos, float notas[][QTD_NOTAS], float mediaAlun
 }
 
 // Verificar a situação dos alunos
-void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno[]){
+void verificarSituacaoAluno(int qtdAlunos, char situacao[][TAM_SITUACAO], float mediaAluno[]){
     for(int i = 0; i < qtdAlunos; i++){
         if(mediaAluno[i] >= 7){
             // Copia a string para o vetor de destino
@@ -94,7 +95,7 @@ void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno
 }
 
 // ordenar os alunos por maior média usando o algoritmo de ordenação Bubble Sort
-void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]){
+void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][TAM_SITUACAO]){
     for(int i = 0; i < qtdAlunos - 1; i++) {
         for(int j = 0; j < qtdAlunos - i - 1; j++) {
             if(mediaAluno[j] < mediaAluno[j + 1]) {
@@ -109,7 +110,7 @@ void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[]
                 idAluno[j + 1] = tempId;
 
                 // Troca as situações dos alunos
-                char tempSituacao[12];
+                char tempSituacao[TAM_SITUACAO];
                 strcpy(tempSituacao, situacao[j]);
                 strcpy(situacao[j], situacao[j + 1]);
                 strcpy(situacao[j + 1], tempSituacao);
@@ -128,7 +129,7 @@ void exibirMaiorEMenorMedia(int idAluno[], float mediaAluno[], int qtdAlunos){
 }
 
 // Exibir o ranking dos alunos
-void exibirRankingAlunos(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]){
+void exibirRankingAlunos(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][TAM_SITUACAO]){
     printf("\nRanking dos Alunos:\n");
     printf("ID do Aluno | Média | Situação\n");
     printf("--------------------------------\n");
