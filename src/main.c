@@ -4,11 +4,13 @@
 
 #define QTD_NOTAS 3
 #define TAM_SITUACAO 12
+#define MAX_ALUNOS 10
 
 // Protótipos das funções
+void leiaQtdAlunos(int *qtdAlunos);
 void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][QTD_NOTAS]);
 void calculeMediaAlunos(int qtdAlunos, float notas[][QTD_NOTAS], float mediaAluno[]);
-void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno[]);
+void verificarSituacaoAluno(int qtdAlunos, char situacao[][TAM_SITUACAO], float mediaAluno[]);
 void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][TAM_SITUACAO]);
 void exibirMaiorEMenorMedia(int idAluno[], float mediaAluno[], int qtdAlunos);
 void exibirRankingAlunos(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][TAM_SITUACAO]);
@@ -18,8 +20,7 @@ int main(){
 
     // Solicita a quantidade de alunos a serem cadastrados
     int qtdAlunos;    
-    printf("Informe a quantidade de alunos a serem cadastrados:\n");
-    scanf("%d", &qtdAlunos);
+    leiaQtdAlunos(&qtdAlunos);
 
     // Declaração dos vetores e matrizes para armazenar os dados dos alunos
     int idAluno[qtdAlunos];
@@ -48,6 +49,17 @@ int main(){
     // Retorna 0 para indicar que o programa terminou com sucesso
     return 0;
 
+}
+
+void leiaQtdAlunos(int *qtdAlunos){
+    do {
+        printf("Informe a quantidade de alunos a serem cadastrados: ");
+        scanf("%d", qtdAlunos);
+
+        if(*qtdAlunos <= 0 || *qtdAlunos > MAX_ALUNOS){
+            printf("Informe uma quantidade entre 1 e %d.\n", MAX_ALUNOS);
+        }
+    } while(*qtdAlunos <= 0 || *qtdAlunos > MAX_ALUNOS);
 }
 
 // Ler os dados dos alunos
