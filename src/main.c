@@ -2,9 +2,11 @@
 #include <stdbool.h>
 #include <string.h>
 
+#define QTD_NOTAS 3
+
 // Protótipos das funções
-void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][3]);
-void calculeMediaAlunos(int qtdAlunos, float notas[][3], float mediaAluno[]);
+void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][QTD_NOTAS]);
+void calculeMediaAlunos(int qtdAlunos, float notas[][QTD_NOTAS], float mediaAluno[]);
 void verificarSituacaoAluno(int qtdAlunos, char situacao[][12], float mediaAluno[]);
 void ordenarAlunosPorMaiorMedia(int qtdAlunos, int idAluno[], float mediaAluno[], char situacao[][12]);
 void exibirMaiorEMenorMedia(int idAluno[], float mediaAluno[], int qtdAlunos);
@@ -22,7 +24,7 @@ int main(){
     int idAluno[qtdAlunos];
     float mediaAluno[qtdAlunos];
     char situacao[qtdAlunos][12];
-    float notas[qtdAlunos][3]; 
+    float notas[qtdAlunos][QTD_NOTAS]; 
 
     // ler os dados dos alunos
     leiaDadosAlunos(qtdAlunos, idAluno, notas);
@@ -48,7 +50,7 @@ int main(){
 }
 
 // Ler os dados dos alunos
-void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][3]){
+void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][QTD_NOTAS]){
     for(int i = 0; i < qtdAlunos; i++) {
         printf("\nInforme o código do aluno %d: ", i + 1);
         scanf("%d", &idAluno[i]); 
@@ -57,13 +59,16 @@ void leiaDadosAlunos(int qtdAlunos, int idAluno[], float notas[][3]){
             do {
                 printf("Informe a nota %d: ", j + 1);
                 scanf("%f", &notas[i][j]); 
-            }while (notas[i][j] > 10 || notas[i][j] < 0);            
+                if(notas[i][j] < 0 || notas[i][j] > 10){
+                    printf("Nota invalida! Digite um valor entre 0 e 10.\n");
+                }
+            }while (notas[i][j] < 0 || notas[i][j] > 10);            
         }
     }
 }
 
 // Calcular a média dos alunos
-void calculeMediaAlunos(int qtdAlunos, float notas[][3], float mediaAluno[]){
+void calculeMediaAlunos(int qtdAlunos, float notas[][QTD_NOTAS], float mediaAluno[]){
     float soma = 0;
     for(int i = 0; i < qtdAlunos; i++) {
         for(int j = 0; j < 3; j++) {    
