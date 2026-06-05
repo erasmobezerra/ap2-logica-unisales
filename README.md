@@ -60,5 +60,5 @@ gcc main.c alunos.c -o main
 | Eividy Silva de Oliveira | [LinkedIn](Link) | [GitHub](Link) | eividy.oliveira@souunisales.com.br |
 | Erasmo Ribeiro Bezerra | [LinkedIn](https://www.linkedin.com/in/erasmobezerra/) | [GitHub](https://github.com/erasmobezerra) | erasmo.ads.tech@gmail.com |
 | Gabriel de Jesus Santana Serri | [LinkedIn](Link) | [GitHub](Link) | gabriel.jesus@souunisales.com.br |
-| ayk Vilar do Bomfim Calmon | [LinkedIn](Link) | [GitHub](Link) | ayk.calmon@souunisales.com.br |
+| Mayk Vilar do Bomfim Calmon | [LinkedIn](Link) | [GitHub](Link) | ayk.calmon@souunisales.com.br |
 
