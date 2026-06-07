@@ -6,11 +6,7 @@ Projeto desenvolvido como Avaliação de Produto 2 da disciplina Lógica Digital
 
 ## 🎯 Objetivo
 
-O programa solicita uma quantidade N de alunos, o código identificador e três notas de cada aluno. Após o processamento dos dados, o sistema retorna um relatório completo detalhando o desempenho da turma, aplicando os conceitos de lógica de programação estruturada.
-
-## 📝 Descrição
-
-Este repositório contém um programa escrito em C para gerenciar e processar notas escolares. A arquitetura do código foi pensada de forma modular, separando as regras de negócio em um módulo específico de alunos (`alunos.c` e `alunos.h`) e mantendo a execução no arquivo principal (`main.c`), garantindo um código limpo e organizado.
+O programa deve solicita uma quantidade N de alunos, o código identificador e três notas de cada aluno. Após o processamento dos dados, o sistema retorna um relatório com a maior e menor média da turma, e um ranking de alunos ordenado da maior para menor média.
 
 ## ✨ Funcionalidades
 
@@ -22,16 +18,9 @@ O sistema é capaz de realizar as seguintes operações:
 - Identificação da **Maior** e **Menor** média geral da turma.
 - Exibição de um **Ranking Final**, ordenando os alunos da maior para a menor nota.
 
-## 📸 Demonstração
-![Print do Terminal](image.png)
+## 📝 Descrição e  estrutura do projeto
 
-## 💻 Tecnologias Utilizadas
-
-- Linguagem C
-- Estruturas de Dados Básicas e Modularização
-- VsCode
-
-## 🏗️ Estrutura do Projeto
+Este repositório contém um programa escrito em C para gerenciar e processar notas escolares. A arquitetura do código foi pensada de forma modular, separando as regras de negócio em um módulo específico de alunos (`alunos.c` e `alunos.h`) e mantendo a execução no arquivo principal (`main.c`), garantindo um código limpo e organizado: 
 
 - `src/`
   - `alunos.c` - Implementação das funções de manipulação de alunos.
@@ -39,18 +28,41 @@ O sistema é capaz de realizar as seguintes operações:
   - `main.c` - Programa principal para compilar e executar o sistema.
   - `main` - Executável gerado após a compilação (não é parte do código-fonte).
 
+
+## 📸 Demonstração
+![Print do Terminal](image.png)
+
+## 💻 Tecnologias Utilizadas
+
+- Linguagem C
+- Compilador GCC (ou equivalente compatível com C)
+- Modularização de código em múltiplos arquivos (`alunos.c`, `alunos.h`, `main.c`)
+- Editor ou IDE com suporte a desenvolvimento em C
+
 ## ✅ Requisitos
 
-- GCC ou outro compilador compatível com a linguagem C.
-- Uma IDE ou editor de texto de sua preferência (como Code::Blocks ou VS Code).
+- Sistema com suporte a compilação em C
+- GCC ou outro compilador compatível com C instalado
+- Acesso a um terminal ou prompt de comando
+- Editor de código ou IDE opcional para abrir e editar os arquivos
 
 ## ▶️ Como compilar e executar o programa
 
-Abra o terminal, navegue até o diretório `src` e execute o comando abaixo para compilar o código fonte e gerar o executável:
+1. Abra um terminal.
+2. Entre na pasta do projeto ou no diretório `src`:   
+3. Compile os arquivos-fonte `main.c` e `alunos.c` em um executável chamado `main`:
+   ```bash
+   gcc main.c alunos.c -o main
+   ```
+4. Execute o programa compilado:
+   ```bash
+   ./main
+   ```
 
-```bash
-gcc main.c alunos.c -o main
-```
+> Se preferir, você também pode compilar a partir da raiz do projeto usando o caminho para os arquivos:
+> ```bash
+> gcc src/main.c src/alunos.c -o main && ./main
+> ```
 
 ## 👥 Equipe
 
